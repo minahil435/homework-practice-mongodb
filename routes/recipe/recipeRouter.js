@@ -29,5 +29,24 @@ router.post("/create-recipe", function (req, res) {
     });
   });
 
+router.put('/update-recipe-by-id/:id', function(req, res) {
+    recipeController.updateRecipeByID(req.body, function (err, payload) {
+        if (err) {
+          res.status(500).json({ message: "Error", error: err });
+        } else {
+          res.json({ message: "success", data: payload });
+        }
+      });
 
+});
+
+router.delete("/delete-recipe-by-id/:id", function (req, res) {
+    userController.deleteRecipeByID(req.params.id, function (err, deletedPayload) {
+      if (err) {
+        res.status(500).json({ message: "Error", error: err });
+      } else {
+        res.json({ message: "success", data: deletedPayload });
+      }
+    });
+  });
 module.exports = router;

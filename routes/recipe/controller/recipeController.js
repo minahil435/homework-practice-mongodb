@@ -24,5 +24,33 @@ module.exports = {
             callback(null, payload);
           }
         });
-      }
+      },
+
+      updateRecipeByID: function (id, body, callback) {
+
+        Recipe.findByIdAndUpdate(
+            { _id: id },
+            body,
+            { new: true },
+            function (err, updatedPayload) {
+              if (err) {
+                callback(err, null);
+              } else {
+                callback(null, updatedPayload);
+              }
+            }
+          );
+      },
+
+
+    deleteRecipeByID:function(id,callback){
+        Recipe.findByIdAndRemove({ _id: id },function(err,payload){
+         
+            if (err) {
+                callback(err, null);
+              } else {
+                callback(null, updatedPayload);
+              }
+        })
+    }
 } 

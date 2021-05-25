@@ -16,6 +16,7 @@ mongoose
 
 var indexRouter = require('./routes/index');
 var recipeRouter = require('./routes/recipe/recipeRouter');
+var productRouter = require('./routes/product/productsRouter');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(cookieParser());
 
 app.use('/', indexRouter);
 app.use('/recipes', recipeRouter);
+app.use("/api/products",productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
