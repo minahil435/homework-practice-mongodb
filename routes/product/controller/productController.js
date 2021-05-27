@@ -4,7 +4,7 @@ module.exports = {
     getAllProducts: function (callback) {
         Product.find({}, function (err, payload) {
             if (err) {
-                callback(err, nul)
+                callback(err, null)
             }
             else {
                 callback(null, payload)
@@ -14,9 +14,9 @@ module.exports = {
     },
 
     getProductByID: function (id, callback) {
-        Product.getProductByID({ _id: id }, function (err, payload) {
+        Product.find({ _id: id }, function (err, payload) {
             if (err) {
-                callback(err, nul)
+                callback(err, null)
             }
             else {
                 callback(null, payload)
